@@ -13,18 +13,18 @@
     }
   ],
   "paths": {
-    "/user": {
+    "/series": {
       "get": {
-        "summary": "Details about a user",
-        "operationId": "listUser",
+        "summary": "Details about a serie",
+        "operationId": "listSerie",
         "tags": [
-          "user"
+          "serie"
         ],
         "parameters": [
           {
             "name": "id",
             "in": "query",
-            "description": "ID of the user",
+            "description": "ID of the serie",
             "required": true,
             "schema": {
               "type": "integer",
@@ -34,7 +34,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Details about a user",
+            "description": "Details about a serie",
             "headers": {
               "x-next": {
                 "description": "A link to the next page of responses",
@@ -46,7 +46,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Serie"
                 }
               }
             }
@@ -67,7 +67,7 @@
   },
   "components": {
     "schemas": {
-      "User": {
+      "Serie": {
         "type": "object",
         "required": [
           "id",
