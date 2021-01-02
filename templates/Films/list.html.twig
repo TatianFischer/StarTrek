@@ -1,0 +1,59 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{serie.name}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+    <div class="film-area-top">
+        <h1 class="{{ serie.police }}">{{ serie.name }}</h1>
+        <div class="mbl">
+            <p>{{ serie.synopsis|nl2br }}</p>
+        </div>
+    </div>
+
+    <section>
+        <h2>Characters</h2>
+        <div class="personnage-list grid-6-medium-3-small-2 has-gutter">
+            {% for personnage in serie.personnages %}
+                <p>
+                    <span>{{ personnage.name }}</span>
+                    <span>({{ personnage.actor }})</span>
+                </p>
+            {% endfor %}
+        </div>
+    </section>
+    {% if serie.recurringPersonnages is not empty %}
+        <section>
+            <h2>Recurring characters</h2>
+            <div class="personnage-list grid-6-medium-3-small-2 has-gutter">
+                {% for personnage in serie.recurringPersonnages %}
+                    <p class="flex-container--column center">
+                        <span>{{ personnage.name }}</span>
+                        <span>({{ personnage.actor }})</span>
+                    </p>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    <section>
+        <h2 class="current-background">Films</h2>
+        <div class="film-list-wrapper">
+            {#<svg class="svg-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 500">
+            <path d="m90 0 t 0,100  s 0,300 300,400"/>
+        </svg>#}
+            <div class="film-list">
+                {% for film in serie.films %}
+                    <div class="film-list-item">
+                        <a href="{{ path('app_film_details', {'serieSlug': serie.slug, 'filmSlug' : film.slug}) }}">
+                            <h3 class="{{ serie.police }}">{{ film.name }}</h3>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

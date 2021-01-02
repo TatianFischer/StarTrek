@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Star Trek - {% block title %}{% endblock %}</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{asset('favicon/apple-icon-57x57.png')}}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{{asset('favicon/apple-icon-60x60.png')}}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{{asset('favicon/apple-icon-72x72.png')}}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{{asset('favicon/apple-icon-76x76.png')}}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{{asset('favicon/apple-icon-114x114.png')}}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{{asset('favicon/apple-icon-120x120.png')}}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{{asset('favicon/apple-icon-144x144.png')}}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{{asset('favicon/apple-icon-152x152.png')}}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-icon-180x180.png')}}">
+		<link rel="icon" type="image/png" sizes="192x192"  href="{{asset('favicon/android-icon-192x192.png')}}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
+		<link rel="icon" type="image/png" sizes="96x96" href="{{asset('favicon/favicon-96x96.png')}}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
+		<link rel="manifest" href="{{asset('favicon/manifest.json')}}">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{{asset('favicon/ms-icon-144x144.png')}}">
+		<meta name="theme-color" content="#ffffff">
+		<link rel="stylesheet" href="{{asset('css/knacss.css')}}">
+		<link rel="stylesheet" href="{{asset('css/layout.css')}}">
+        {% block addCSS %}{% endblock %}
+    </head>
+    <body>
+    	<header class="header">
+    		<div class="mauto mw1352p flex-container--column">
+    			<div class="box-logo">
+    				<a href="{{path("homepage")}}">
+    					<img src="{{asset('images/starfleet-logo-wallpaper.jpg')}}">
+    				</a>
+    			</div>
+    			  {{ render(controller('App\\Controller\\SerieController::menu', {'is_admin' : is_admin|default(false)})) }}
+    		</div>
+    	</header>
+        <div class="breadcrumb mlauto mrauto mw1352p w100">
+            {{ include('Layout/breadcrumb.html.twig') }}
+        </div>
+        <div class="alert-box mlauto mrauto mw1352p w100">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert--{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    	<main class="item-fluid mlauto mrauto mw1352p w100 {% if is_admin|default(false) %}admin--variation{% endif %}">
+    		{% block body %}{% endblock %}
+    	</main>
+
+        <footer class="flex-container"><p><a href="{{ path("easyadmin") }}">Easy-admin</a></p><p><a href="{{ path("administration") }}">Administration</a></p></footer>
+        <script src="{{ asset("/js/jquery-3.4.1.min.js") }}" type="text/javascript"></script>
+        <script src="{{ asset("/js/app.js") }}" type="text/javascript"></script>
+        {% block addJS %}{% endblock %}
+    </body>
+</html>

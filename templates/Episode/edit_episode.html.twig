@@ -1,0 +1,13 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}Edit {{serie.name}} - saison {{ saison.number }} - episode {{ episode.number }}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	{{ form_start(form)}}
+            {{form_widget(form, {'attr' : {'class': 'grid-6-medium-3-small-3 has-gutter'}})}}
+        {{ form_start(form)}}
+{% endblock %}
+
+{% block addJS %}{% endblock %}

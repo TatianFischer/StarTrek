@@ -1,0 +1,13 @@
+:root {
+  --form-bg: var(--gray-200);
+}
+
+.form-control, .select2-container--bootstrap .select2-selection, .select2-dropdown {
+  background-color: var(--gray-100);
+}
+
+.form-widget textarea.form-control {
+  max-width: none;
+}
+
+/*# sourceMappingURL=admin.css.map */

@@ -1,0 +1,9 @@
+<div class="saison-list-item flex-container--column {{ saison.color }}">
+	{% if saison.image is not empty %}
+		<img src="{{ asset('/images/saisons/'~saison.image) }}" alt="">
+	{% endif %}
+	<div class="saison-list-item-body">
+		<h2 class="{{ serie.police }}">Saison {{ saison.number }}</h2>
+		<a href="{{ path('app_saison_view', {'serieSlug':serie.slug,'saisonNumber' : saison.number}) }}"><button class="btn--inverse">Voir plus</button></a>
+	</div>
+</div>

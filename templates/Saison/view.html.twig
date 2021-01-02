@@ -1,0 +1,48 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{serie.name}} - Season {{saison.number}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	<div>
+		<div>
+			<h1 class="{{ serie.police }} {{ saison.color }}">{{ serie.name }} - Season {{ saison.number }}</h1>
+		</div>
+		<div class="episode-list {{ saison.color }}">
+			{% for episode in episodes %}
+				<div class="episode-list-item">
+					<h2>{{episode.number}} - {{episode.name}} <span class="plus">+</span></h2>
+					<div class="episode-details visually-hidden">
+						{% if episode.image is not empty %}
+							<div class="episode-image">
+								<img src="{{ asset('images/episodes/'~serie.code~'/'~episode.image )}}">
+							</div>
+						{% endif %}
+						<div class="item-fluid">
+							<div class="flex-column item-center">
+								<h3 class="item-center">{{episode.name}}</h3>
+								<h4 class="item-center">{{episode.titre}}</h4>
+							</div>
+							<div class="episode-synopsis">
+								<p>{{episode.synopsis|raw}}</p>
+								<div>
+									<a href="{{ path('app_episode_view', {'serieSlug': serie.slug, 'saisonNumber': saison.number, 'episodeNumber' : episode.number}) }}">
+										<button class="btn--episode">See</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="ptm pbm">
+			<p>
+                <a href="{{ path("app_episode_add", {'serieSlug': serie.slug, 'saisonNumber': saison.number}) }}">Add New Episode</a>
+            </p>
+		</div>
+	</div>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

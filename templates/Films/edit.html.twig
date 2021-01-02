@@ -1,0 +1,16 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}Edit {{serie.name}} - {{ film.name }}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="h3-like">Edition :</h1>
+        {{ form_start(form)}}
+        {{form_widget(form, {'attr' : {'class': 'grid-2-medium-1-small-1 has-gutter'}})}}
+        {{ form_start(form)}}
+    </div>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

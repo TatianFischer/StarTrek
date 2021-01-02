@@ -1,0 +1,47 @@
+<p>
+	<a href="{{ path('homepage') }}">
+		<span>Homepage</span>
+		<span>H</span>
+	</a>
+</p>
+{% if serie is defined %}
+<p>
+	{% if saison is defined %}{% set route = (is_admin|default(false)) ? 'app_serie_edit' : 'app_serie_view' %}
+		<a href="{{ path(route, {'serieSlug' : serie.slug}) }}">
+	{% elseif film is defined %}{% set route = (is_admin|default(false)) ? 'app_serie_edit' : 'app_film_list' %}
+		<a href="{{ path(route, {'serieSlug' : serie.slug}) }}">
+	{% endif %}
+		<span>{{ serie.name }}</span>
+		<span>{{ serie.code }}</span>
+	{%- if saison is defined or film is defined -%}
+		</a>
+	{%- endif -%}
+</p>
+{% endif %}
+
+{% if saison is defined %}
+<p>
+	{% if episode is defined %}{% set route = (is_admin|default(false)) ? 'app_saison_edit' : 'app_saison_view' %}
+		<a href="{{ path(route, {'serieSlug':serie.slug,'saisonNumber' : saison.number}) }}">
+	{% endif %}
+		<span>Season {{ saison.number }}</span>
+		<span>{{ saison.number }}</span>
+	{% if episode is defined %}
+		</a>
+	{% endif %}
+</p>
+{% endif %}
+
+{% if episode is defined %}
+<p>
+	<span>{{ episode.number ~' - '~ episode.name }}</span>
+	<span>{{ episode.name }}</span>
+</p>
+{% endif %}
+
+{% if film is defined %}
+	<p>
+		<span>{{ film.name|default('-') }}</span>
+		<span>{{ film.name|default('-') }}</span>
+	</p>
+{% endif %}

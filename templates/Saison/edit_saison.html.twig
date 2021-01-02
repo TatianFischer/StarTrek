@@ -1,0 +1,37 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}Edit {{serie.name}} - saison {{ saison.number }}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	<div>
+		<h1 class="h3-like">Edition :</h1>
+		{{ form_start(form)}}
+            {{form_widget(form, {'attr' : {'class': 'grid-2-medium-1-small-1 has-gutter'}})}}
+        {{ form_start(form)}}
+	</div>
+	<div class="admin-saison-list-container">
+		<h1 class="h3-like">Episodes :</h1>
+		<div class="admin-saison-list">
+    		{% for episode in saison.episodes %}
+                <div>
+                    <p>
+                        <a href="{{ path("app_episode_edit", {'serieSlug': serie.slug, 'saisonNumber': saison.number, 'episodeNumber' : episode.number}) }}">
+                            {{ episode.number }} - {{ episode.name }}
+                        </a>
+                    </p>
+                </div>
+    		{% endfor %}
+            {% if saison.number is not empty %}
+                <div>  
+                    <p>
+                        <a href="{{ path("app_episode_add", {'serieSlug': serie.slug, 'saisonNumber': saison.number}) }}">+</a>
+                    </p>
+                </div>
+            {% endif %}
+    	</div>
+	</div>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{serie.name}} - season {{saison.number}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	<div class="episode-page">
+		<div class="episode-edit">
+			<a href="{{ path("app_episode_edit", {'serieSlug': serie.slug, 'saisonNumber': saison.number, 'episodeNumber' : episode.number}) }}">
+				<button class="btn--episode">Edit</button>
+			</a>
+		</div>
+		<div class="flex-container--column">
+			<h1 class="item-center {{saison.color}} {{serie.police}}">{{ episode.name }}</h1>
+			<h2 class="item-center">{{ episode.titre}}</h2>
+		</div>
+
+		{% if episode.image is not empty %}
+			<div class="episode-image ptm">
+				<img src="{{ asset('images/episodes/'~serie.code~'/'~episode.image )}}">
+			</div>
+		{% endif %}
+
+		<div class="ptm">
+			<p>N° de diffussion : {{ episode.diffusion }}</p>
+		</div>
+
+		<div>
+			<h3 class="{{saison.color}} {{serie.police}}">Synopsis</h3>
+			{{episode.synopsis}}
+		</div>
+
+		<div class="mtm mbl">
+			<h3 class="{{saison.color}} {{serie.police}}">Resume</h3>
+			{{episode.resume|raw}}
+		</div>
+	</div>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

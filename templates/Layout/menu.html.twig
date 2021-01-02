@@ -1,0 +1,11 @@
+<button class="nav-button" type="button" role="button" aria-label="open/close navigation"><i></i></button>
+<nav role="navigation" class="item-fluid">
+	<ul class="flex-container--column {% if is_admin %}admin--variation{% endif %}">
+		{% for serie in series %}
+			{% set path_name = (is_admin) ? 'app_serie_edit' : (serie.isFilm) ? 'app_film_list' :'app_serie_view' %}
+			<li>
+				<a href="{{ path(path_name, {'serieSlug' : serie.slug}) }}">{{ serie.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>

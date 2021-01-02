@@ -1,0 +1,14 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{serie.name}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+    <h1 class="{{ serie.police }}">{{ film.name }}</h1>
+    <div class="mbl">
+        <p>{{ film.synopsis|nl2br }}</p>
+    </div>
+{% endblock %}
+
+{% block addJS %}{% endblock %}

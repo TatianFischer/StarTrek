@@ -1,0 +1,57 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}Edit {{serie.name}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	<div>
+		<h1 class="h3-like">Edition :</h1>
+        {{ form_start(form)}}
+            {{form_widget(form, {'attr' : {'class': 'grid-2-medium-1-small-1 has-gutter'}})}}
+        {{ form_start(form)}}
+	</div>
+    {% if serie.isFilm %}
+        <div class="admin-saison-list-container">
+            <h1 class="h3-like">Films :</h1>
+            <div class="admin-saison-list">
+                {% for film in serie.films %}
+                    <div>
+                        <p>
+                            <a href="{{ path("app_film_edit", {'serieSlug': serie.slug, 'filmSlug': film.slug}) }}">
+                                {{ film.name }}
+                            </a>
+                        </p>
+                    </div>
+                {% endfor %}
+                <div>
+                    <p>
+                        <a href="{{ path("app_film_add", {'serieSlug': serie.slug}) }}">+</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="admin-saison-list-container">
+            <h1 class="h3-like">Seasons :</h1>
+            <div class="admin-saison-list">
+                {% for saison in serie.saisons %}
+                    <div>
+                        <p>
+                            <a href="{{ path("app_saison_edit", {'serieSlug': serie.slug, 'saisonNumber': saison.number}) }}">
+                                {{ saison.number }}
+                            </a>
+                        </p>
+                    </div>
+                {% endfor %}
+                <div>
+                    <p>
+                        <a href="{{ path("app_saison_add", {'serieSlug': serie.slug}) }}">+</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block addJS %}{% endblock %}

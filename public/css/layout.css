@@ -1,0 +1,1032 @@
+@font-face {
+  font-family: "Beijing";
+  src: url("font/Beijing.ttf") format("truetype");
+}
+@font-face {
+  font-family: "StarTrekBT";
+  src: url("font/StarTrekBT-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FederationTNGTitle";
+  src: url("font/FederationTNGTitle.ttf") format("truetype");
+}
+@font-face {
+  font-family: "StarTrekFilmBT";
+  src: url("font/StarTrekFilmBT-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Starfleet_2";
+  src: url("font/Starfleet_2.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Subspace_Italic";
+  src: url("font/Subspace_Italic.ttf") format("truetype");
+}
+.tos-police {
+  font-family: "StarTrekBT";
+}
+
+.tng-police {
+  font-family: "FederationTNGTitle";
+}
+
+.ds9-police {
+  font-family: "StarTrekFilmBT";
+}
+
+.ent-police {
+  font-family: "Starfleet_2";
+}
+
+.dis-police {
+  font-family: "Subspace_Italic";
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header.header {
+  padding: 1rem;
+  background: #25374F;
+  margin-bottom: 1.5rem;
+}
+@media screen and (min-width: 1352px) {
+  header.header {
+    padding: 1rem 0;
+  }
+}
+header.header > div {
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  header.header > div {
+    flex-direction: row;
+  }
+}
+header.header .box-logo {
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+@media screen and (min-width: 480px) {
+  header.header .box-logo {
+    width: 150px;
+  }
+}
+header.header .nav-button {
+  order: -1;
+  align-self: flex-start;
+}
+@media screen and (min-width: 480px) {
+  header.header .nav-button {
+    display: none;
+  }
+}
+header.header nav[role=navigation] {
+  display: none;
+}
+header.header nav[role=navigation].is-opened {
+  display: flex;
+}
+@media screen and (min-width: 480px) {
+  header.header nav[role=navigation] {
+    display: flex;
+  }
+}
+header.header nav[role=navigation] ul {
+  padding: 0.7rem;
+  justify-content: space-between;
+}
+@media screen and (min-width: 480px) {
+  header.header nav[role=navigation] ul {
+    flex-direction: row;
+  }
+}
+header.header nav[role=navigation] ul li {
+  display: flex;
+  list-style-type: none;
+  flex: 1 0 auto;
+  min-width: 25%;
+}
+@media screen and (min-width: 992px) {
+  header.header nav[role=navigation] ul li {
+    min-width: 15%;
+  }
+}
+header.header nav[role=navigation] ul a, header.header nav[role=navigation] ul a:hover {
+  font-family: "Beijing";
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+header.header nav[role=navigation] ul a {
+  margin: auto;
+  padding: 0.7rem 0;
+  color: #fff;
+}
+header.header nav[role=navigation] ul a:hover {
+  color: #DAA92B;
+}
+header.header nav[role=navigation] ul.admin--variation a:hover {
+  color: #CC2227;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+}
+.breadcrumb p {
+  position: relative;
+  margin-bottom: 0;
+  padding: 0 13px 0 26px;
+  line-height: 26px;
+  box-shadow: 0 0 0 2px #25374F inset;
+}
+.breadcrumb p:first {
+  padding-left: 13px;
+  border-left: 2px solid #25374F;
+}
+.breadcrumb p:before, .breadcrumb p:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  content: "";
+}
+.breadcrumb p:before {
+  right: -12px;
+  border-left: 13px solid #25374F;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+}
+.breadcrumb p:after {
+  right: -10px;
+  border-left: 13px solid #f8f9fa;
+  border-top: calc(26px / 2) solid transparent;
+  border-bottom: calc(26px / 2) solid transparent;
+  z-index: 1;
+}
+.breadcrumb p a, .breadcrumb p a:hover {
+  text-decoration: none;
+}
+.breadcrumb p span:first-child {
+  display: none;
+}
+@media (min-width: 480px) {
+  .breadcrumb p span:first-child {
+    display: initial;
+  }
+  .breadcrumb p span:last-child {
+    display: none;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1rem 0;
+}
+@media (min-width: 1352px) {
+  main {
+    padding: 2rem 0;
+  }
+}
+main.admin--variation {
+  background: transparent url("/images/admin.svg") repeat-y center center;
+  min-height: 200px;
+  justify-content: center;
+}
+
+footer {
+  min-height: 50px;
+  margin-top: auto;
+  background: #25374F;
+}
+footer p {
+  margin: auto;
+}
+footer a, footer a:hover {
+  text-decoration: none;
+}
+footer a {
+  color: #fff;
+}
+footer a:hover {
+  color: #CC2227;
+}
+
+.saison-list {
+  margin-top: 1rem;
+  margin-bottom: 6rem;
+}
+
+.saison-list-item {
+  align-items: center;
+  max-width: 500px;
+  padding: 1rem;
+  margin: auto;
+  border: 3px solid #25374F;
+  border-radius: 15px;
+  box-shadow: 0 0 10px;
+  overflow: hidden;
+}
+@media (max-width: 479px) {
+  .saison-list-item {
+    margin: 1rem auto;
+  }
+}
+.saison-list-item .saison-list-item-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+.saison-list-item img {
+  transform: scale(1.1);
+}
+.saison-list-item button {
+  margin-top: auto;
+  padding: 1rem 2rem;
+  font-family: Beijing, serif;
+}
+
+.personnage-list {
+  place-items: center;
+  padding: 1rem 0;
+}
+.personnage-list p {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  border: 3px solid #25374F;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+}
+.personnage-list span {
+  text-align: center;
+}
+
+.episode-list {
+  margin: 0 1rem;
+}
+.episode-list h2 {
+  position: relative;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 3px solid #25374F;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.episode-list h2 .plus {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  color: transparent;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20standalone%3D%22no%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20style%3D%22isolation%3Aisolate%22%20viewBox%3D%220%200%2020%2020%22%20width%3D%2220%22%20height%3D%2220%22%3E%3Cpath%20d%3D%22%20M%209.96%2011.966%20L%203.523%205.589%20C%202.464%204.627%200.495%206.842%201.505%207.771%20L%201.505%207.771%20L%208.494%2014.763%20C%209.138%2015.35%2010.655%2015.369%2011.29%2014.763%20L%2011.29%2014.763%20L%2018.49%207.771%20C%2019.557%206.752%2017.364%204.68%2016.262%205.725%20L%2016.262%205.725%20L%209.96%2011.966%20Z%20%22%20fill%3D%22%2343535a%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 1.4rem;
+}
+.episode-list h2.selected .plus, .episode-list h2:hover .plus {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20standalone%3D%22no%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20style%3D%22isolation%3Aisolate%22%20viewBox%3D%220%200%2020%2020%22%20width%3D%2220%22%20height%3D%2220%22%3E%3Cpath%20d%3D%22%20M%209.96%2011.966%20L%203.523%205.589%20C%202.464%204.627%200.495%206.842%201.505%207.771%20L%201.505%207.771%20L%208.494%2014.763%20C%209.138%2015.35%2010.655%2015.369%2011.29%2014.763%20L%2011.29%2014.763%20L%2018.49%207.771%20C%2019.557%206.752%2017.364%204.68%2016.262%205.725%20L%2016.262%205.725%20L%209.96%2011.966%20Z%20%22%20fill%3D%22%23ffffff%22/%3E%3C/svg%3E");
+}
+.episode-list h2.selected .plus {
+  transform: rotate(180deg);
+}
+
+.episode-list-item h3, .episode-list-item h4 {
+  text-transform: uppercase;
+  font-family: Beijing, serif;
+}
+
+h1.yellow-tos, h3.yellow-tos {
+  color: #DAA92B;
+}
+
+.saison-list-item.yellow-tos h2 {
+  color: #DAA92B;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-tos button {
+  background-color: #DAA92B;
+}
+
+.episode-list.yellow-tos h2.selected, .episode-list.yellow-tos h2:hover {
+  color: #fff;
+  background-color: #DAA92B;
+  border-color: #DAA92B;
+}
+
+.to-be-continued.yellow-tos a {
+  color: #DAA92B;
+}
+
+h1.red-tos, h3.red-tos {
+  color: #CC2227;
+}
+
+.saison-list-item.red-tos h2 {
+  color: #CC2227;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.red-tos button {
+  background-color: #CC2227;
+}
+
+.episode-list.red-tos h2.selected, .episode-list.red-tos h2:hover {
+  color: #fff;
+  background-color: #CC2227;
+  border-color: #CC2227;
+}
+
+.to-be-continued.red-tos a {
+  color: #CC2227;
+}
+
+h1.blue-tos, h3.blue-tos {
+  color: #5D86C5;
+}
+
+.saison-list-item.blue-tos h2 {
+  color: #5D86C5;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.blue-tos button {
+  background-color: #5D86C5;
+}
+
+.episode-list.blue-tos h2.selected, .episode-list.blue-tos h2:hover {
+  color: #fff;
+  background-color: #5D86C5;
+  border-color: #5D86C5;
+}
+
+.to-be-continued.blue-tos a {
+  color: #5D86C5;
+}
+
+h1.orange-tas, h3.orange-tas {
+  color: #E18D25;
+}
+
+.saison-list-item.orange-tas h2 {
+  color: #E18D25;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.orange-tas button {
+  background-color: #E18D25;
+}
+
+.episode-list.orange-tas h2.selected, .episode-list.orange-tas h2:hover {
+  color: #fff;
+  background-color: #E18D25;
+  border-color: #E18D25;
+}
+
+.to-be-continued.orange-tas a {
+  color: #E18D25;
+}
+
+h1.yellow-tng, h3.yellow-tng {
+  color: #9A7D19;
+}
+
+.saison-list-item.yellow-tng h2 {
+  color: #9A7D19;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-tng button {
+  background-color: #9A7D19;
+}
+
+.episode-list.yellow-tng h2.selected, .episode-list.yellow-tng h2:hover {
+  color: #fff;
+  background-color: #9A7D19;
+  border-color: #9A7D19;
+}
+
+.to-be-continued.yellow-tng a {
+  color: #9A7D19;
+}
+
+h1.red-tng, h3.red-tng {
+  color: #6E0526;
+}
+
+.saison-list-item.red-tng h2 {
+  color: #6E0526;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.red-tng button {
+  background-color: #6E0526;
+}
+
+.episode-list.red-tng h2.selected, .episode-list.red-tng h2:hover {
+  color: #fff;
+  background-color: #6E0526;
+  border-color: #6E0526;
+}
+
+.to-be-continued.red-tng a {
+  color: #6E0526;
+}
+
+h1.blue-tng, h3.blue-tng {
+  color: #256185;
+}
+
+.saison-list-item.blue-tng h2 {
+  color: #256185;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.blue-tng button {
+  background-color: #256185;
+}
+
+.episode-list.blue-tng h2.selected, .episode-list.blue-tng h2:hover {
+  color: #fff;
+  background-color: #256185;
+  border-color: #256185;
+}
+
+.to-be-continued.blue-tng a {
+  color: #256185;
+}
+
+h1.yellow-ds9, h3.yellow-ds9 {
+  color: #9A7D19;
+}
+
+.saison-list-item.yellow-ds9 h2 {
+  color: #9A7D19;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-ds9 button {
+  background-color: #9A7D19;
+}
+
+.episode-list.yellow-ds9 h2.selected, .episode-list.yellow-ds9 h2:hover {
+  color: #fff;
+  background-color: #9A7D19;
+  border-color: #9A7D19;
+}
+
+.to-be-continued.yellow-ds9 a {
+  color: #9A7D19;
+}
+
+h1.red-ds9, h3.red-ds9 {
+  color: #6E0526;
+}
+
+.saison-list-item.red-ds9 h2 {
+  color: #6E0526;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.red-ds9 button {
+  background-color: #6E0526;
+}
+
+.episode-list.red-ds9 h2.selected, .episode-list.red-ds9 h2:hover {
+  color: #fff;
+  background-color: #6E0526;
+  border-color: #6E0526;
+}
+
+.to-be-continued.red-ds9 a {
+  color: #6E0526;
+}
+
+h1.green-ds9, h3.green-ds9 {
+  color: #2E6D72;
+}
+
+.saison-list-item.green-ds9 h2 {
+  color: #2E6D72;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.green-ds9 button {
+  background-color: #2E6D72;
+}
+
+.episode-list.green-ds9 h2.selected, .episode-list.green-ds9 h2:hover {
+  color: #fff;
+  background-color: #2E6D72;
+  border-color: #2E6D72;
+}
+
+.to-be-continued.green-ds9 a {
+  color: #2E6D72;
+}
+
+h1.yellow-voy, h3.yellow-voy {
+  color: #9A7D19;
+}
+
+.saison-list-item.yellow-voy h2 {
+  color: #9A7D19;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-voy button {
+  background-color: #9A7D19;
+}
+
+.episode-list.yellow-voy h2.selected, .episode-list.yellow-voy h2:hover {
+  color: #fff;
+  background-color: #9A7D19;
+  border-color: #9A7D19;
+}
+
+.to-be-continued.yellow-voy a {
+  color: #9A7D19;
+}
+
+h1.red-voy, h3.red-voy {
+  color: #6E0526;
+}
+
+.saison-list-item.red-voy h2 {
+  color: #6E0526;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.red-voy button {
+  background-color: #6E0526;
+}
+
+.episode-list.red-voy h2.selected, .episode-list.red-voy h2:hover {
+  color: #fff;
+  background-color: #6E0526;
+  border-color: #6E0526;
+}
+
+.to-be-continued.red-voy a {
+  color: #6E0526;
+}
+
+h1.green-voy, h3.green-voy {
+  color: #2E6D72;
+}
+
+.saison-list-item.green-voy h2 {
+  color: #2E6D72;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.green-voy button {
+  background-color: #2E6D72;
+}
+
+.episode-list.green-voy h2.selected, .episode-list.green-voy h2:hover {
+  color: #fff;
+  background-color: #2E6D72;
+  border-color: #2E6D72;
+}
+
+.to-be-continued.green-voy a {
+  color: #2E6D72;
+}
+
+h1.yellow-pic, h3.yellow-pic {
+  color: #e5bb41;
+}
+
+.saison-list-item.yellow-pic h2 {
+  color: #e5bb41;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-pic button {
+  background-color: #e5bb41;
+}
+
+.episode-list.yellow-pic h2.selected, .episode-list.yellow-pic h2:hover {
+  color: #fff;
+  background-color: #e5bb41;
+  border-color: #e5bb41;
+}
+
+.to-be-continued.yellow-pic a {
+  color: #e5bb41;
+}
+
+h1.yellow-pic, h3.yellow-pic {
+  color: transparent;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.saison-list-item.yellow-pic h2 {
+  color: transparent;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.yellow-pic button {
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+}
+
+.episode-list.yellow-pic h2.selected, .episode-list.yellow-pic h2:hover {
+  color: #fff;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  border-image: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) 1/3px;
+}
+
+h1.test, h3.test {
+  color: transparent;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.saison-list-item.test h2 {
+  color: transparent;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+.saison-list-item.test button {
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+}
+
+.episode-list.test h2.selected, .episode-list.test h2:hover {
+  color: #fff;
+  background: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) no-repeat;
+  border-image: linear-gradient(to bottom, #ebc142, #e5bb41, #ac7e3d) 1/3px;
+}
+
+.episode-details {
+  display: flex;
+  border: solid #acb3c2 1px;
+  padding: 1rem;
+}
+.episode-details .episode-image {
+  flex-shrink: 0;
+  padding-right: 2rem;
+}
+.episode-details .episode-image img {
+  max-height: 150px;
+}
+.episode-details .episode-synopsis {
+  display: flex;
+  flex-wrap: wrap;
+}
+.episode-details .episode-synopsis p {
+  flex: 1 1 400px;
+}
+@media (min-width: 480px) {
+  .episode-details .episode-synopsis p {
+    flex-shrink: 0;
+  }
+}
+.episode-details .episode-synopsis div {
+  flex: 1 0 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .episode-details .episode-synopsis div {
+    flex: 0 0 150px;
+  }
+}
+@media (min-width: 992px) {
+  .episode-details .episode-synopsis div {
+    flex: 0 0 180px;
+  }
+}
+.episode-details .episode-synopsis button {
+  border-radius: 5px;
+}
+
+[class$=tos] .episode-list-item h3 {
+  color: #DAA92B;
+  background-image: repeating-linear-gradient(to right, #CC2227 0px, #CC2227 4px, transparent 4px, transparent 10px);
+  background-size: 90% 3px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+[class$=tos] .episode-list-item h4 {
+  color: #5D86C5;
+}
+
+[class$=tng] .episode-list-item h3 {
+  color: #6E0526;
+  background-image: repeating-linear-gradient(to right, #256185 0px, #256185 4px, transparent 4px, transparent 10px);
+  background-size: 90% 3px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+[class$=tng] .episode-list-item h4 {
+  color: #9A7D19;
+}
+
+[class$=ds9] .episode-list-item h3 {
+  color: #6E0526;
+  background-image: repeating-linear-gradient(to right, #9A7D19 0px, #9A7D19 4px, transparent 4px, transparent 10px);
+  background-size: 90% 3px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+[class$=ds9] .episode-list-item h4 {
+  color: #2E6D72;
+}
+
+[class$=voy] .episode-list-item h3 {
+  color: #6E0526;
+  background-image: repeating-linear-gradient(to right, #2E6D72 0px, #2E6D72 4px, transparent 4px, transparent 10px);
+  background-size: 90% 3px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+[class$=voy] .episode-list-item h4 {
+  color: #9A7D19;
+}
+
+.episode-page h1 {
+  font-size: 5rem;
+}
+.episode-page h1[class$=tos] {
+  background-image: repeating-linear-gradient(to right, #CC2227 0px, #CC2227 4px, transparent 4px, transparent 10px);
+  background-size: 90% 3px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+.episode-page h3 {
+  font-size: 3.4rem;
+}
+.episode-page h4 {
+  font-family: Beijing, serif;
+  font-size: 2.2rem;
+}
+.episode-page .episode-edit {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: -1rem;
+}
+.episode-page .episode-image {
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  padding-top: 2rem;
+}
+@media screen and (min-width: 576px) {
+  .episode-page .episode-image {
+    float: left;
+    padding: 2rem 3rem 3rem 0;
+  }
+}
+.episode-page .to-be-continued {
+  font-weight: 700;
+  text-align: right;
+}
+
+.film-area-top {
+  background-color: #f8f9fa;
+  position: relative;
+  z-index: 1;
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+.film-list-wrapper {
+  overflow: hidden;
+  position: relative;
+  margin-top: -40px;
+  margin-left: 1rem;
+  width: 100%;
+  height: 500px;
+  /*.svg-path{
+  	position: absolute;
+  	left: 0;
+  	top: 0;
+  	width: 100%;
+  	height: 100%;
+  	fill: none;
+  	stroke: black;
+  	stroke-width: 3;
+  	stroke-dasharray: 10;
+  }*/
+}
+@media screen and (min-width: 480px) {
+  .film-list-wrapper {
+    margin-top: -45px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .film-list-wrapper {
+    width: 550px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .film-list-wrapper {
+    width: 750px;
+  }
+}
+
+.current-background {
+  background-color: #f8f9fa;
+}
+
+.film-list {
+  position: relative;
+}
+.film-list h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 1;
+}
+@media screen and (min-width: 480px) {
+  .film-list h2 {
+    font-size: 2rem;
+  }
+}
+
+.film-list-item {
+  max-width: 160px;
+  position: absolute;
+  transform: translateX(50%);
+  padding: 0.5rem 1rem;
+  border: 4px solid #e5bb41;
+  background: #fff;
+  animation: move 4s forwards ease-in-out;
+  offset-path: path("m0 0 t 0,100  s 150,400 300,400");
+  offset-rotate: 0deg;
+  z-index: -1;
+}
+@media screen and (min-width: 480px) {
+  .film-list-item {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 480px) {
+  .film-list-item {
+    padding: 0.7rem 1.5rem;
+    border-width: 5px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .film-list-item {
+    offset-path: path("m0 0 t 0,100  s 150,400 500,400");
+  }
+}
+@media screen and (min-width: 768px) {
+  .film-list-item {
+    offset-path: path("m0 0 t 0,100  s 150,400 600,400");
+  }
+}
+
+.film-list-item:nth-child(1) {
+  offset-distance: 13%;
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(1) {
+    offset-distance: calc(11%);
+  }
+}
+
+.film-list-item:nth-child(2) {
+  offset-distance: calc(24%);
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(2) {
+    offset-distance: calc(20%);
+  }
+}
+
+.film-list-item:nth-child(3) {
+  offset-distance: calc(35.5%);
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(3) {
+    offset-distance: calc(30%);
+  }
+}
+
+.film-list-item:nth-child(4) {
+  offset-distance: calc(47.5%);
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(4) {
+    offset-distance: calc(41%);
+  }
+}
+
+.film-list-item:nth-child(5) {
+  offset-distance: calc(59.5%);
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(5) {
+    offset-distance: calc(54%);
+  }
+}
+
+.film-list-item:nth-child(6) {
+  offset-distance: calc(74%);
+}
+@media screen and (min-width: 480px) {
+  .film-list-item:nth-child(6) {
+    offset-distance: calc(73%);
+  }
+}
+@media screen and (min-width: 576px) {
+  .film-list-item:nth-child(6) {
+    offset-distance: calc(72%);
+  }
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+}
+.admin-saison-list-container {
+  display: flex;
+  align-items: baseline;
+}
+.admin-saison-list-container h1 {
+  margin: inherit;
+  flex-shrink: 0;
+}
+
+.admin-saison-list {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 2rem 0 2rem 2rem;
+}
+.admin-saison-list div {
+  display: flex;
+  padding: 1rem 0;
+}
+.admin-saison-list p {
+  margin: auto;
+  border: solid 2px #25374F;
+  border-radius: 5px;
+}
+.admin-saison-list p a {
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form > div {
+  width: 100%;
+  margin: auto;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.form-group label {
+  width: 100px;
+  background-color: #25374F;
+  box-shadow: 0 0 0 2px #25374F;
+  color: #fff;
+  margin-bottom: 0;
+  padding: 0.5rem 1rem;
+}
+.form-group input, .form-group textarea, .form-group select {
+  min-width: 200px;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: 0 0 0 2px #25374F;
+  flex: 1 1 0;
+}
+.form-group.textarea-row {
+  display: block;
+}
+.form-group.textarea-row label {
+  width: 100%;
+}
+.form-group textarea {
+  min-height: 200px;
+}
+.form-group textarea[id=episode_synopsis] {
+  min-height: 100px;
+}
+.form-group button {
+  margin-left: auto;
+  background-color: #25374F;
+}
+.form-group #episode_saison, .form-group #episode_number, .form-group #episode_diffusion {
+  min-width: 50px;
+}
+
+/*# sourceMappingURL=layout.css.map */

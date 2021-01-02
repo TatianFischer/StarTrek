@@ -1,0 +1,46 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{serie.name}}{% endblock %}
+
+{% block addCSS %}{% endblock %}
+
+{% block body %}
+	<h1 class="{{ serie.police }}">{{ serie.name }}</h1>
+	<div class="mbl">
+		<p>{{ serie.synopsis|nl2br }}</p>
+	</div>
+	<section>
+		<h2>Characters</h2>
+		<div class="personnage-list grid-6-medium-3-small-2 has-gutter">
+			{% for personnage in serie.personnages %}
+				<p class="flex-container--column center">
+					<span>{{ personnage.name }}</span>
+					<span>({{ personnage.actor }})</span>
+				</p>
+			{% endfor %}
+		</div>
+	</section>
+	{% if serie.recurringPersonnages is not empty %}
+		<section>
+			<h2>Recurring characters</h2>
+			<div class="personnage-list grid-6-medium-3-small-2 has-gutter">
+				{% for personnage in serie.recurringPersonnages %}
+					<p class="flex-container--column center">
+						<span>{{ personnage.name }}</span>
+						<span>({{ personnage.actor }})</span>
+					</p>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+	<section>
+		<h2>Seasons</h2>
+		<div class="saison-list grid-3-medium-2-small-1 has-gutter-l">
+			{% for saison in serie.saisons %}
+				{{ include('Saison/preview.html.twig') }}
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
+
+{% block addJS %}{% endblock %}
