@@ -34,6 +34,19 @@ class SerieRepository extends ServiceEntityRepository
 
     }
 
+    public function getDetailsSerie(int $id)
+    {
+        $qb = $this->createQueryBuilder('s');
+        $qb->select('s, saisons, personnages, recurringPersonnages');
+        $qb->leftJoin('s.saisons','saisons');
+        $qb->leftJoin('s.personnages', 'personnages');
+        $qb->leftJoin('s.recurringPersonnages', 'recurringPersonnages');
+        $qb->andWhere($qb->expr()->eq('s.id', ':id'));
+        $qb->setParameters(array('id'=>$id));
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     public function getSerieWithSaisons($slug)
     {
         $qb = $this->createQueryBuilder('s');

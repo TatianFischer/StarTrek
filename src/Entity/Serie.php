@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SerieRepository")
@@ -23,67 +25,93 @@ class Serie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=50)
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Saison", mappedBy="serie", orphanRemoval=true)
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $saisons;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $police;
 
     /**
      * @ORM\Column(type="string", length=10)
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $code;
 
     /**
      * @ORM\Column(type="boolean")
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $isFilm;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Film", mappedBy="serie")
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $films;
 
     /**
      * @ORM\ManyToMany(targetEntity=Personnage::class, mappedBy="series", cascade={"persist","remove"})
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $personnages;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $debut;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     *
+     * @Serializer\Groups({"list", "detail"})
      */
     private $end;
 
     /**
      * @ORM\ManyToMany(targetEntity=Personnage::class, mappedBy="recurring")
      * @ORM\JoinTable(name="recurring_serie")
+     *
+     * @Serializer\Groups({"detail"})
      */
     private $recurringPersonnages;
 
@@ -266,24 +294,24 @@ class Serie
         return $this;
     }
 
-    public function getDebut(): ?\DateTimeInterface
+    public function getDebut(): ?DateTimeInterface
     {
         return $this->debut;
     }
 
-    public function setDebut(?\DateTimeInterface $debut): self
+    public function setDebut(?DateTimeInterface $debut): self
     {
         $this->debut = $debut;
 
         return $this;
     }
 
-    public function getEnd(): ?\DateTimeInterface
+    public function getEnd(): ?DateTimeInterface
     {
         return $this->end;
     }
 
-    public function setEnd(?\DateTimeInterface $end): self
+    public function setEnd(?DateTimeInterface $end): self
     {
         $this->end = $end;
 

@@ -13,7 +13,7 @@
     }
   ],
   "paths": {
-    "/series": {
+    "/series/{id}": {
       "get": {
         "summary": "Details about a serie",
         "operationId": "listSerie",
@@ -23,7 +23,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID of the serie",
             "required": true,
             "schema": {
@@ -81,8 +81,28 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "slug": {
             "type": "string"
+          },
+          "synopsis": {
+            "type": "string"
+          },
+          "police": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "is_film": {
+            "type": "boolean"
+          },
+          "debut": {
+            "type": "string",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
