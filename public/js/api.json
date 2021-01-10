@@ -1,127 +1,250 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "StarTrek",
-    "license": {
-      "name": "MIT"
-    }
-  },
-  "servers": [
-    {
-      "url": "http://startrek.local/api"
-    }
-  ],
-  "paths": {
-    "/series/{id}": {
-      "get": {
-        "summary": "Details about a serie",
-        "operationId": "listSerie",
-        "tags": [
-          "serie"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the serie",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Details about a serie",
-            "headers": {
-              "x-next": {
-                "description": "A link to the next page of responses",
-                "schema": {
-                  "type": "string"
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Star Trek API",
+        "description": "This is an fantastic app!",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "\/api\/series\/all": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "operationId": null,
+                "responses": {
+                    "200": {
+                        "description": "Return all series",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#\/components\/schemas\/Serie_light"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
+            }
+        },
+        "\/api\/series\/{id}": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "operationId": null,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the serie",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int32",
+                            "pattern": "\\d+"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details about a serie",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Serie"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/api\/series\/search": {
+            "post": {
+                "tags": [
+                    "Series"
+                ],
+                "operationId": null,
+                "requestBody": {
+                    "content": {
+                        "application\/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Search serie",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#\/components\/schemas\/Serie_light"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Serie_light": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "is_film": {
+                        "type": "boolean"
+                    },
+                    "debut": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Serie"
-                }
-              }
+            "Serie": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "saisons": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/Saison"
+                        }
+                    },
+                    "synopsis": {
+                        "type": "string"
+                    },
+                    "police": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "is_film": {
+                        "type": "boolean"
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/Film"
+                        }
+                    },
+                    "personnages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/Personnage"
+                        }
+                    },
+                    "debut": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "recurring_personnages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/Personnage"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Error": {
+                "description": "Error",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 404
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Item not found"
+                    }
+                },
+                "type": "object"
+            },
+            "Saison": {
+                "type": "object"
+            },
+            "Film": {
+                "type": "object"
+            },
+            "Personnage": {
+                "type": "object"
             }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
         }
-      }
     }
-  },
-  "components": {
-    "schemas": {
-      "Serie": {
-        "type": "object",
-        "required": [
-          "id",
-          "name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "synopsis": {
-            "type": "string"
-          },
-          "police": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          },
-          "is_film": {
-            "type": "boolean"
-          },
-          "debut": {
-            "type": "string",
-            "format": "date"
-          },
-          "end": {
-            "type": "string",
-            "format": "date"
-          }
-        }
-      },
-      "Error": {
-        "type": "object",
-        "required": [
-          "code",
-          "message"
-        ],
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
 }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Serie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
 
@@ -34,6 +35,12 @@ class SerieRepository extends ServiceEntityRepository
 
     }
 
+    /**
+     * @param int $id
+     * @return int|mixed|string
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     public function getDetailsSerie(int $id)
     {
         $qb = $this->createQueryBuilder('s');
@@ -44,7 +51,7 @@ class SerieRepository extends ServiceEntityRepository
         $qb->andWhere($qb->expr()->eq('s.id', ':id'));
         $qb->setParameters(array('id'=>$id));
 
-        return $qb->getQuery()->getOneOrNullResult();
+        return $qb->getQuery()->getSingleResult();
     }
 
     public function getSerieWithSaisons($slug)
@@ -74,6 +81,15 @@ class SerieRepository extends ServiceEntityRepository
         } catch (NonUniqueResultException $e) {
             return null;
         }
+    }
+
+    public function apiSearchSeries($parameters)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('s');
+
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**
